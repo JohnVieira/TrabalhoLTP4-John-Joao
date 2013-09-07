@@ -23,11 +23,12 @@ import javax.inject.Named;
 @SessionScoped
 public class FornecedorController implements Serializable {
 
+        
+    @EJB
+    FornecedorRepositorio dao;
     Fornecedor entidade;
     Fornecedor filtro;
     List<Fornecedor> listagem;
-    @EJB
-    FornecedorRepositorio dao;
 
 
     /**
@@ -47,6 +48,7 @@ public class FornecedorController implements Serializable {
         dao.Salvar(entidade);
         listagem = null;
         exibirMensagem("Salvo com Sucesso!");
+        entidade = new Fornecedor();
 
     }
 
@@ -84,6 +86,19 @@ public class FornecedorController implements Serializable {
         this.entidade = entidade;
     }
 
+    public List<Fornecedor> listarTodos() {
+        listagem = dao.Buscar(filtro);
+        return listagem;
+    }
+
+    public FornecedorRepositorio getDao() {
+        return dao;
+    }
+
+    public void setDao(FornecedorRepositorio dao) {
+        this.dao = dao;
+    }
+
     public Fornecedor getFiltro() {
         return filtro;
     }
@@ -93,16 +108,12 @@ public class FornecedorController implements Serializable {
     }
 
     public List<Fornecedor> getListagem() {
-       if (listagem == null) {
-         Fornecedor filtro = new Fornecedor();
-         listagem = dao.Buscar(null);
-        }
         return listagem;
     }
 
     public void setListagem(List<Fornecedor> listagem) {
         this.listagem = listagem;
     }
-    
-    
+
+  
 }

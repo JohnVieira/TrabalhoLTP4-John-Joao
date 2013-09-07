@@ -98,12 +98,13 @@ public class FuncionarioController implements Serializable {
     }
 
     public List<Funcionario> getListagem() {
-        if (listagem == null) {
-            Funcionario filtro = new Funcionario();
-            listagem = dao.Buscar(null);
-        }
+      if (listagem == null) {
+          Funcionario filtro = new Funcionario();
+          listagem = dao.Buscar(filtro);
+      }
         return listagem;
     }
+        
 
     public void setListagem(List<Funcionario> listagem) {
         this.listagem = listagem;
@@ -115,6 +116,9 @@ public class FuncionarioController implements Serializable {
         }
         return listagemTipos;
     }
+
+ 
+    
 
     public void setListagemTipos(List<TipoFuncionario> listagemTipos) {
 

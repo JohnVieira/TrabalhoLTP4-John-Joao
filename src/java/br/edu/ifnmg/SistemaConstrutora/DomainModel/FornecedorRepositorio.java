@@ -11,9 +11,6 @@ import javax.ejb.Remote;
  * @author Junior
  */
 @Remote
-public interface FornecedorRepositorio 
-    extends Repositorio<Fornecedor>{
-    
-    public Fornecedor porCnpj(String cnpj);
-    
+public interface FornecedorRepositorio extends Repositorio<Fornecedor>{
+
 }

@@ -13,7 +13,6 @@ import javax.ejb.Remote;
 @Remote
 public interface FuncionarioRepositorio 
     extends Repositorio<Funcionario>{
-    
-    public Funcionario porLogin(String login);
+   
     
 }

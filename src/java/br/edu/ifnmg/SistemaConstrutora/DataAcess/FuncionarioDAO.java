@@ -92,19 +92,19 @@ public class FuncionarioDAO
 
     }
     
-    @Override
-    public Funcionario porLogin(String login){
-        String consulta = "select f from Funcionario f where f.login=:login";
-                // Cria a consulta no JPA
-        Query query = manager.createQuery(consulta);
-
-        // Aplica os parâmetros da consulta
-        query.setParameter("login", login);
-
-        // Executa a consulta
-        return (Funcionario)query.getSingleResult();
-
-
-    }
+//    @Override
+//    public Funcionario porLogin(String login){
+//        String consulta = "select f from Funcionario f where f.login=:login";
+//                // Cria a consulta no JPA
+//        Query query = manager.createQuery(consulta);
+//
+//        // Aplica os parâmetros da consulta
+//        query.setParameter("login", login);
+//
+//        // Executa a consulta
+//        return (Funcionario)query.getSingleResult();
+//
+//
+//    }
 
 }

@@ -27,7 +27,7 @@ public class FornecedorDAO
     @Override
     public List<Fornecedor> Buscar(Fornecedor obj) {
         // Corpo da consulta
-        String consulta = "select f from Fornecedor f";
+        String consulta = " select f from Fornecedor f ";
 
         // A parte where da consulta
         String filtro = "";
@@ -37,59 +37,21 @@ public class FornecedorDAO
 
         // Verifica campo por campo os valores que serão filtrados
         if (obj!=null) {
-            if (obj.getRazaoSocial() != null && obj.getRazaoSocial().length() > 0) {
-                filtro += " f.razaoSocial=:razaoSocial ";
-                parametros.put("razaoSocial", obj.getRazaoSocial());
-            }
-
-            if (obj.getEndereco() != null && obj.getEndereco().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro += " and ";
-                }
-                filtro += " f.endereco=:endereco ";
-                parametros.put("endereco", obj.getEndereco());
-            }
-
-            if (obj.getId() != null && obj.getId() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " f.id =:id";
-                parametros.put("id", obj.getId());
-            }
-
-            if (obj.getEmail() != null && obj.getEmail().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " f.email=:email";
-                parametros.put("email", obj.getEmail());
-            }
-
-            if (obj.getCidade() != null && obj.getCidade().toString().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " f.cidade=:cidade ";
-                parametros.put("cidade", obj.getCidade());
-            }
-
-            if (obj.getCnpj() != null && obj.getCnpj().toString().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " f.cnpj=:cnpj ";
-                parametros.put("cnpj", obj.getCnpj());
-            }   
-               
-            if (obj.getTelefone() != null && obj.getTelefone().toString().length() > 0) {
-                if (filtro.length() > 0) {
-                    filtro = filtro + " and ";
-                }
-                filtro += " f.telefone=:telefone ";
-                parametros.put("telefone", obj.getTelefone());
-            }
-            // Se houver filtros, coloca o "where" na consulta
+//            
+//            if (obj.getRazaoSocial() != null && obj.getRazaoSocial().length() > 0) {
+//                filtro += " f.razaoSocial=:razaoSocial ";
+//                parametros.put("razaoSocial", obj.getRazaoSocial());
+//            }
+//            
+//            if (obj.getCnpj() != null && obj.getCnpj().toString().length() > 0) {
+//                if (filtro.length() > 0) {
+//                    filtro = filtro + " and ";
+//                }
+//                filtro += " f.cnpj=:cnpj ";
+//                parametros.put("cnpj", obj.getCnpj());
+//            }   
+//            
+            //Se houver filtros, coloca o "where" na consulta
             if (filtro.length() > 0) {
                 consulta = consulta + " where " + filtro;
             }
@@ -108,18 +70,18 @@ public class FornecedorDAO
 
     }
     
-    @Override
-    public Fornecedor porCnpj (String cnpj){
-        String consulta = "select f from Fornecedor f where f.cnpj=:cnpj";
-                // Cria a consulta no JPA
-        Query query = manager.createQuery(consulta);
-
-        // Aplica os parâmetros da consulta
-        query.setParameter("cnpj", cnpj);
-
-        // Executa a consulta
-        return (Fornecedor)query.getSingleResult();
-    }
+//    @Override
+//    public Fornecedor porCnpj (String cnpj){
+//        String consulta = "select f from Fornecedor f where f.cnpj=:cnpj";
+//                // Cria a consulta no JPA
+//        Query query = manager.createQuery(consulta);
+//
+//        // Aplica os parâmetros da consulta
+//        query.setParameter("cnpj", cnpj);
+//
+//        // Executa a consulta
+//        return (Fornecedor)query.getSingleResult();
+//    }
     
     
     
